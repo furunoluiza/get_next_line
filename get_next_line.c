@@ -12,10 +12,54 @@
 
 #include "get_next_line.h"
 
-static char	*rest_line(int fd, size_t line_bytes
+static char	*rest_line(char *line)
+{
+	int     i;
+        int     j;
+        char    *rest;
 
-static char	*cut_line(int fd, size_t line_bytes)
+        i = 0;
+        j = 0;
+        while (line[i] != '\n')
+                i++;
+	while (line[j] != '\0')
+		j++;
+        rest = (char *)malloc ((j - i + 1) * sizeof(char));
+        if (!rest)
+                return (NULL);
+        while (line[i] != '\0' )
+        {
+                *rest = line[i];
+		rest++;
+                i++;
+        }
+        *rest = '\0';
+	free (line);
+        return (rest);
+}
 
+static char	*cut_line(char *line)
+{
+	int	i;
+	int	j;
+	char	*print_line;
+
+	i = 0;
+	j = 0;
+	while (line[i] != '\n')
+		i++;
+	print_line = (char *)malloc ((i + 2) * sizeof(char));
+	if (!print_line)
+		return (NULL);
+	while (line[j] != '\n')
+	{
+		print_line[j] = line[j];
+		j++;
+	}
+	print_line[j] = '\n';
+	print_line[j + 1] = '\0';
+	return (print_line);
+}
 static char	read_file(int fd, char *line)
 {
 	int		line_bytes
@@ -30,13 +74,13 @@ static char	read_file(int fd, char *line)
 		line_bytes = read(fd, *buf, BUFFER_SIZE);
 		if (line_bytes < 0)
 		{
-			free(buf)
+			free(buf);
 			return (NULL);
 		}
 		buf[line_bytes] = '\0';
-		line = ft_strjoin(line, buffer);
+		line = ft_strjoin(line, buf);
 	}
-	free(buf)
+	free(buf);
 	return (line);
 }
 

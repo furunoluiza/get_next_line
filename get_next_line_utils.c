@@ -12,9 +12,17 @@
 
 #include "get_next_line.h"
 
-static 
+int	ft_strlen(const char *s)
+{
+	int	len;
 
-static char	*ft_strjoin(char const *s1, char const *s2)
+	len = 0;
+	while (*s++)
+		len++;
+	return (len);
+}
+
+char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*p;
 	size_t	i;
@@ -42,7 +50,7 @@ static char	*ft_strjoin(char const *s1, char const *s2)
 	return (p);
 }
 
-static char	*ft_strchr(const char *str, int ch)
+char	*ft_strchr(const char *str, int ch)
 {
 	unsigned char	*end_str;
 
