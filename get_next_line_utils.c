@@ -6,7 +6,7 @@
 /*   By: lfuruno- <lfuruno-@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 11:17:53 by lfuruno-          #+#    #+#             */
-/*   Updated: 2023/12/04 13:07:34 by lfuruno-         ###   ########.fr       */
+/*   Updated: 2023/12/07 17:42:16 by lfuruno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,32 @@ int	ft_strlen(const char *s)
 	return (len);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strdup(const char *s)
+{
+	int		i;
+	char	*p;
+
+	i = 0;
+	p = malloc ((ft_strlen(s) + 1) * sizeof (char));
+	if (!p)
+		return (NULL);
+	while (s[i] != '\0')
+	{
+		p[i] = s[i];
+		i++;
+	}
+	p[i] = '\0';
+	return (p);
+}
+
+char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*p;
 	size_t	i;
 	size_t	j;
 
-	if (!s1 || !s2)
-		return (NULL);
+	if (!s1)
+		s1 = ft_strdup("");
 	i = 0;
 	j = 0;
 	p = (char *)malloc ((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
@@ -47,6 +65,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		j++;
 	}
 	p[i] = '\0';
+	free(s1);
 	return (p);
 }
 
@@ -54,6 +73,8 @@ char	*ft_strchr(const char *str, int ch)
 {
 	unsigned char	*end_str;
 
+	if (!str)
+		return (NULL);
 	end_str = ((unsigned char *) str);
 	while (*end_str)
 		end_str++;
@@ -65,5 +86,5 @@ char	*ft_strchr(const char *str, int ch)
 			return ((char *) str);
 		str++;
 	}
-	return (0);
+	return (NULL);
 }
