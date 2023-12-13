@@ -6,7 +6,7 @@
 /*   By: lfuruno- <lfuruno-@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 11:17:02 by lfuruno-          #+#    #+#             */
-/*   Updated: 2023/12/07 18:13:34 by lfuruno-         ###   ########.fr       */
+/*   Updated: 2023/12/13 12:50:36 by lfuruno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static char	*rest_line(char *line)
 
 	i = 0;
 	j = 0;
-	while (line [i] && line[i] != '\n')
+	while (line[i] && line[i] != '\n')
 		i++;
 	if (!(line[i]))
 	{
@@ -33,11 +33,9 @@ static char	*rest_line(char *line)
 	if (!rest)
 		return (0);
 	j = 0;
-	while (line[i] != '\0')
+	while (line[i++] != '\0')
 	{
-		rest[j] = line[i + 1];
-		j++;
-		i++;
+		rest[j++] = line[i];
 	}
 	free (line);
 	return (rest);
