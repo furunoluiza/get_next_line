@@ -9,7 +9,7 @@ This project aims to create a function that can extract lines from a text file, 
 1. Install
 
 ```sh
-https://github.com/furunoluiza/get_next_line.git
+git clone https://github.com/furunoluiza/get_next_line.git
 ```
 
 2. Usage
