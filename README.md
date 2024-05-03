@@ -6,10 +6,10 @@ This project aims to create a function that can extract lines from a text file, 
 
 ## How to Use
 
-1. Install
+1. Install and enter in the directory
 
 ```sh
-git clone https://github.com/furunoluiza/get_next_line.git
+git clone https://github.com/furunoluiza/get_next_line.git && cd get_next_line
 ```
 
 2. Usage
